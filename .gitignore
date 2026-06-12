@@ -27,3 +27,4 @@ logs
 *.tsbuildinfo
 *.vue.d.ts
 .playwright-mcp
+package-lock.json
