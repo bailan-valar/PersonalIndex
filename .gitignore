@@ -26,3 +26,4 @@ logs
 # TypeScript
 *.tsbuildinfo
 *.vue.d.ts
+.playwright-mcp
