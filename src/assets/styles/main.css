@@ -27,6 +27,10 @@
     font-feature-settings: 'cv11', 'ss01';
   }
 
+  #__nuxt {
+    @apply min-h-screen flex flex-col;
+  }
+
   /* Smooth scrolling */
   html {
     @apply scroll-smooth;

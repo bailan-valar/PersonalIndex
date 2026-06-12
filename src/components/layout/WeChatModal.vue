@@ -22,18 +22,22 @@ const onKeydown = (e: KeyboardEvent) => {
 
 // Prevent body scroll when modal is open
 watch(() => props.show, (show) => {
-  if (show) {
-    document.body.style.overflow = 'hidden'
-    window.addEventListener('keydown', onKeydown)
-  } else {
-    document.body.style.overflow = ''
-    window.removeEventListener('keydown', onKeydown)
+  if (import.meta.client) {
+    if (show) {
+      document.body.style.overflow = 'hidden'
+      window.addEventListener('keydown', onKeydown)
+    } else {
+      document.body.style.overflow = ''
+      window.removeEventListener('keydown', onKeydown)
+    }
   }
 }, { immediate: true })
 
 onBeforeUnmount(() => {
-  document.body.style.overflow = ''
-  window.removeEventListener('keydown', onKeydown)
+  if (import.meta.client) {
+    document.body.style.overflow = ''
+    window.removeEventListener('keydown', onKeydown)
+  }
 })
 </script>
 

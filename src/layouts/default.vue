@@ -24,7 +24,7 @@ useHead({
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col bg-background text-text">
+  <div class="min-h-screen flex flex-col flex-1 bg-background text-text">
     <Header />
 
     <main class="flex-1 pt-16">
