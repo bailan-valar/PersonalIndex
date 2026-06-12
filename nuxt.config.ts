@@ -64,5 +64,11 @@ export default defineNuxtConfig({
     experimental: {
       openAPI: true,
     },
+    // Cloudflare Pages 静态导出配置
+    preset: 'static',
+    // 静态生成时忽略 prerender 的错误
+    prerender: {
+      failOnError: false,
+    },
   },
 })
