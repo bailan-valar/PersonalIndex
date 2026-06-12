@@ -25,12 +25,12 @@ useHead({
 
 <template>
   <div class="min-h-screen flex flex-col bg-background text-text">
-    <AppHeader />
+    <Header />
 
     <main class="flex-1 pt-16">
       <slot />
     </main>
 
-    <AppFooter />
+    <Footer />
   </div>
 </template>

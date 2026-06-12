@@ -2,8 +2,8 @@
 const skills = [
   { name: 'Vue.js / Nuxt', icon: 'ph:code-duotone', level: 'advanced' },
   { name: 'TypeScript', icon: 'ph:brackets-curly-duotone', level: 'advanced' },
-  { name: 'Node.js', icon: 'ph:server-duotone', level: 'intermediate' },
-  { name: 'Python', icon: 'ph:snake-duotone', level: 'intermediate' },
+  { name: 'Node.js', icon: 'ph:hard-drives-duotone', level: 'intermediate' },
+  { name: 'Python', icon: 'ph:terminal-window-duotone', level: 'intermediate' },
   { name: 'UI/UX Design', icon: 'ph:paint-brush-duotone', level: 'intermediate' },
   { name: 'DevOps', icon: 'ph:cloud-duotone', level: 'learning' },
 ]

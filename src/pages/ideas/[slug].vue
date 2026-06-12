@@ -11,24 +11,6 @@ if (!post.value) {
   throw createError({ statusCode: 404, statusMessage: 'Post not found' })
 }
 
-// SEO
-useSeoMeta({
-  title: post.value.title,
-  description: post.value.description,
-  ogType: 'article',
-  articlePublishedTime: post.value.date,
-})
-
-// Structured data
-useSchemaOrg([
-  defineArticle({
-    headline: post.value.title,
-    description: post.value.description,
-    datePublished: post.value.date,
-    author: [definePerson({ name: '迪恩' })],
-  }),
-])
-
 // Get related posts
 const { data: relatedPosts } = await useAsyncData('related-posts', () =>
   queryContent('/blog')

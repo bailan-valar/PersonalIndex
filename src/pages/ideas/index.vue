@@ -5,12 +5,6 @@ const { data: ideas } = await useAsyncData('ideas', () =>
     .sort({ date: -1 })
     .find()
 )
-
-// SEO
-useSeoMeta({
-  title: '想法 - 迪恩',
-  description: '记录我的思考、灵感和学习心得',
-})
 </script>
 
 <template>

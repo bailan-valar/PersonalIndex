@@ -1,18 +1,24 @@
 <script setup lang="ts">
 const config = useAppConfig()
 
-useSeoMeta({
-  title: '关于 - 迪恩',
-  description: config.author.tagline,
-})
+const showWeChatModal = ref(false)
 </script>
 
 <template>
   <div class="section">
     <div class="container-custom">
       <div class="max-w-3xl mx-auto">
+        <!-- Avatar -->
+        <div class="flex justify-center mb-8">
+          <img
+            :src="config.author.avatar"
+            :alt="config.author.name"
+            class="w-40 h-40 rounded-full object-cover border-4 border-primary-500/20 shadow-lg"
+          />
+        </div>
+
         <!-- Page Header -->
-        <div class="mb-8">
+        <div class="mb-8 text-center">
           <h1 class="mb-2">关于我</h1>
           <p class="text-xl text-text-muted italic">"{{ config.author.tagline }}"</p>
         </div>
@@ -48,10 +54,18 @@ useSeoMeta({
                 GitHub
               </a>
             </li>
-            <li v-if="config.social.twitter">
-              <a :href="config.social.twitter" target="_blank" rel="noopener noreferrer">
-                Twitter
+            <li v-if="config.social.xiaohongshu">
+              <a :href="config.social.xiaohongshu" target="_blank" rel="noopener noreferrer">
+                小红书
               </a>
+            </li>
+            <li v-if="config.social.wechat">
+              <button
+                @click="showWeChatModal = true"
+                class="text-primary-500 hover:underline font-medium"
+              >
+                微信 (扫码添加)
+              </button>
             </li>
           </ul>
 
@@ -61,5 +75,8 @@ useSeoMeta({
         </div>
       </div>
     </div>
+
+    <!-- WeChat Modal -->
+    <WeChatModal v-model:show="showWeChatModal" @close="showWeChatModal = false" />
   </div>
 </template>

@@ -19,6 +19,14 @@ const heroContent = {
   <section class="section min-h-[80vh] flex items-center justify-center">
     <div class="container-custom">
       <div class="max-w-3xl">
+        <!-- Avatar -->
+        <div class="mb-8 animate-fade-in">
+          <img
+            :src="config.author.avatar"
+            :alt="config.author.name"
+            class="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-primary-500/20 shadow-lg"
+          />
+        </div>
         <!-- Greeting -->
         <p class="text-lg text-text-muted mb-4 animate-fade-in">
           {{ heroContent.greeting }}

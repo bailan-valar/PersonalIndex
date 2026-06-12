@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const config = useAppConfig()
 const currentYear = new Date().getFullYear()
+
+const showWeChatModal = ref(false)
 </script>
 
 <template>
@@ -30,17 +32,28 @@ const currentYear = new Date().getFullYear()
             <Icon name="ph:github-logo" class="text-xl" />
           </a>
           <a
-            v-if="config.social.twitter"
-            :href="config.social.twitter"
+            v-if="config.social.xiaohongshu"
+            :href="config.social.xiaohongshu"
             target="_blank"
             rel="noopener noreferrer"
             class="text-text-muted hover:text-primary-500 transition-colors"
-            aria-label="Twitter"
+            aria-label="小红书"
           >
-            <Icon name="ph:twitter-logo" class="text-xl" />
+            <Icon name="ph:book-bookmark-duotone" class="text-xl" />
           </a>
+          <button
+            v-if="config.social.wechat"
+            @click="showWeChatModal = true"
+            class="text-text-muted hover:text-primary-500 transition-colors"
+            aria-label="微信"
+          >
+            <Icon name="ph:chat-circle-dots-duotone" class="text-xl" />
+          </button>
         </div>
       </div>
     </div>
+
+    <!-- WeChat Modal -->
+    <WeChatModal v-model:show="showWeChatModal" @close="showWeChatModal = false" />
   </footer>
 </template>

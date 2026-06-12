@@ -7,11 +7,13 @@ export default defineAppConfig({
     title: 'Independent Developer',
     personality: 'INFJ',
     tagline: '喜欢把各种奇思妙想变成现实',
+    avatar: '/images/person/avatar.jpg',
   },
 
   social: {
-    github: 'https://github.com',
-    twitter: 'https://twitter.com',
+    github: 'https://github.com/bailan-valar',
+    xiaohongshu: 'https://xhslink.com/m/2ffaUQ3jXMx',
+    wechat: '/images/person/wechat.jpg',
   },
 
   nav: {

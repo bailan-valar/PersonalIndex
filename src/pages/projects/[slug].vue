@@ -11,13 +11,6 @@ if (!project.value) {
   throw createError({ statusCode: 404, statusMessage: 'Project not found' })
 }
 
-// SEO
-useSeoMeta({
-  title: project.value.title,
-  description: project.value.description,
-  ogType: 'website',
-})
-
 // Get related projects
 const { data: relatedProjects } = await useAsyncData('related-projects', () =>
   queryContent('/projects')

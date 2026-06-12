@@ -10,6 +10,11 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
 
+  components: {
+    path: '~/components',
+    pathPrefix: false,
+  },
+
   modules: [
     '@nuxt/content',
     '@nuxtjs/tailwindcss',

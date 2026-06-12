@@ -1,0 +1,26 @@
+{
+  "env": {
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "glm-4.5-air",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "glm-5-turbo",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "glm-5.1"
+  },
+  "permissions": {
+    "defaultMode": "bypassPermissions",
+    "allow": [
+      "mcp__ide__getDiagnostics",
+      "Bash(npx nuxt *)",
+      "Bash(grep -rl '\\\\$rxdb' /Users/wangchenjia/lifeos '--include=*.vue' '--include=*.ts')",
+      "Bash(git commit -m ' *)",
+      "Bash(npx vue-tsc *)",
+      "Bash(git reset *)",
+      "Bash(git commit *)"
+    ]
+  },
+  "defaultMode": "bypassPermissions",
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "playwright",
+    "context7",
+    "sequential-thinking"
+  ]
+}
