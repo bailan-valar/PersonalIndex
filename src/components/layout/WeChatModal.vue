@@ -14,18 +14,27 @@ const onBackdropClick = (e: MouseEvent) => {
 }
 
 // Close on Escape key
-onKeyStroke('Escape', () => {
-  emit('close')
-})
+const onKeydown = (e: KeyboardEvent) => {
+  if (e.key === 'Escape') {
+    emit('close')
+  }
+}
 
 // Prevent body scroll when modal is open
 watch(() => props.show, (show) => {
   if (show) {
     document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', onKeydown)
   } else {
     document.body.style.overflow = ''
+    window.removeEventListener('keydown', onKeydown)
   }
 }, { immediate: true })
+
+onBeforeUnmount(() => {
+  document.body.style.overflow = ''
+  window.removeEventListener('keydown', onKeydown)
+})
 </script>
 
 <template>
