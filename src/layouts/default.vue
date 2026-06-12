@@ -5,16 +5,22 @@ useHead({
   htmlAttrs: {
     lang: 'zh-CN',
   },
+  meta: [
+    {
+      script: {
+        type: 'application/ld+json',
+        innerHTML: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Person',
+          name: config.author.name,
+          description: config.author.tagline,
+          jobTitle: config.author.title,
+          url: 'https://dean.dev',
+        }),
+      },
+    },
+  ],
 })
-
-useSchemaOrg([
-  definePerson({
-    name: config.author.name,
-    description: config.author.tagline,
-    jobTitle: config.author.title,
-    url: 'https://dean.dev',
-  }),
-])
 </script>
 
 <template>
