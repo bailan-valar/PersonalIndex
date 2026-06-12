@@ -1,9 +1,9 @@
 <script setup lang="ts">
 // Get all ideas
 const { data: ideas } = await useAsyncData('ideas', () =>
-  queryContent('/blog')
-    .sort({ date: -1 })
-    .find()
+  queryCollection('blog')
+    .order('date', 'DESC')
+    .all()
 )
 </script>
 
@@ -20,7 +20,7 @@ const { data: ideas } = await useAsyncData('ideas', () =>
       <div v-if="ideas && ideas.length > 0" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         <BlogCard
           v-for="idea in ideas"
-          :key="idea._path"
+          :key="idea.path"
           :post="idea"
         />
       </div>

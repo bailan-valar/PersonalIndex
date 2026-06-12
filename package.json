@@ -16,6 +16,7 @@
     "@nuxtjs/color-mode": "^3.5.2",
     "better-sqlite3": "^12.5.0",
     "nuxt": "^3.15.0",
+    "sql.js": "^1.14.1",
     "vue": "^3.5.0"
   },
   "devDependencies": {

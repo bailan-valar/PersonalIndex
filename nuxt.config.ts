@@ -46,8 +46,9 @@ export default defineNuxtConfig({
         dark: 'github-dark',
       },
     },
-    // Disable database to avoid SQLite issues
-    database: false,
+    experimental: {
+      sqliteConnector: 'native',
+    },
   },
 
   tailwindcss: {

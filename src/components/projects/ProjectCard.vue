@@ -1,6 +1,6 @@
 <script setup lang="ts">
 interface Project {
-  _path?: string
+  path?: string
   title?: string
   description?: string
   date?: string
@@ -22,8 +22,8 @@ const formatDate = (date: string | undefined) => {
 
 <template>
   <NuxtLink
-    v-if="project._path"
-    :to="project._path"
+    v-if="project.path"
+    :to="project.path"
     class="card group hover:border-primary/50 transition-all duration-300"
   >
     <!-- Thumbnail -->

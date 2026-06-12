@@ -1,9 +1,9 @@
 <script setup lang="ts">
 // Get all projects
 const { data: projects } = await useAsyncData('projects', () =>
-  queryContent('/projects')
-    .sort({ date: -1 })
-    .find()
+  queryCollection('projects')
+    .order('date', 'DESC')
+    .all()
 )
 </script>
 
@@ -20,7 +20,7 @@ const { data: projects } = await useAsyncData('projects', () =>
       <div v-if="projects && projects.length > 0" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         <ProjectCard
           v-for="project in projects"
-          :key="project._path"
+          :key="project.path"
           :project="project"
         />
       </div>

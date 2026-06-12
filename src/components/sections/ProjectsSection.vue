@@ -1,10 +1,10 @@
 <script setup lang="ts">
 // Get featured projects from content
 const { data: projects } = await useAsyncData('featured-projects', () =>
-  queryContent('/projects')
-    .where({ featured: true })
-    .sort({ date: -1 })
-    .find()
+  queryCollection('projects')
+    .where('featured', '=', true)
+    .order('date', 'DESC')
+    .all()
 )
 
 const sectionContent = {
@@ -38,7 +38,7 @@ const sectionContent = {
       <div v-if="projects && projects.length > 0" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         <ProjectCard
           v-for="project in projects"
-          :key="project._path"
+          :key="project.path"
           :project="project"
         />
       </div>

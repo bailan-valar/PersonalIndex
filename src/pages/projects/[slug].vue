@@ -3,7 +3,9 @@ const route = useRoute()
 
 // Fetch the project
 const { data: project } = await useAsyncData(`project-${route.params.slug}`, () =>
-  queryContent(`/projects/${route.params.slug}`).findOne()
+  queryCollection('projects')
+    .path(`/projects/${route.params.slug}`)
+    .first()
 )
 
 // Handle 404
@@ -13,11 +15,11 @@ if (!project.value) {
 
 // Get related projects
 const { data: relatedProjects } = await useAsyncData('related-projects', () =>
-  queryContent('/projects')
-    .where({ _path: { $ne: project.value?._path } })
-    .sort({ date: -1 })
+  queryCollection('projects')
+    .where('path', '<>', project.value?.path)
+    .order('date', 'DESC')
     .limit(3)
-    .find()
+    .all()
 )
 </script>
 
@@ -94,7 +96,7 @@ const { data: relatedProjects } = await useAsyncData('related-projects', () =>
           <div class="grid sm:grid-cols-3 gap-6">
             <ProjectCard
               v-for="relatedProject in relatedProjects"
-              :key="relatedProject._path"
+              :key="relatedProject.path"
               :project="relatedProject"
             />
           </div>

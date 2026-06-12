@@ -1,6 +1,6 @@
 <script setup lang="ts">
 interface Post {
-  _path?: string
+  path?: string
   title?: string
   description?: string
   date?: string
@@ -20,8 +20,8 @@ const formatDate = (date: string | undefined) => {
 
 <template>
   <NuxtLink
-    v-if="post._path"
-    :to="post._path"
+    v-if="post.path"
+    :to="post.path"
     class="card group hover:border-primary/50 transition-all duration-300"
   >
     <!-- Title -->

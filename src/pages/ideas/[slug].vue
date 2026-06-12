@@ -3,7 +3,9 @@ const route = useRoute()
 
 // Fetch the blog post
 const { data: post } = await useAsyncData(`post-${route.params.slug}`, () =>
-  queryContent(`/blog/${route.params.slug}`).findOne()
+  queryCollection('blog')
+    .path(`/ideas/${route.params.slug}`)
+    .first()
 )
 
 // Handle 404
@@ -13,11 +15,11 @@ if (!post.value) {
 
 // Get related posts
 const { data: relatedPosts } = await useAsyncData('related-posts', () =>
-  queryContent('/blog')
-    .where({ _path: { $ne: post.value?._path } })
-    .sort({ date: -1 })
+  queryCollection('blog')
+    .where('path', '<>', post.value?.path)
+    .order('date', 'DESC')
     .limit(3)
-    .find()
+    .all()
 )
 </script>
 
@@ -59,7 +61,7 @@ const { data: relatedPosts } = await useAsyncData('related-posts', () =>
           <div class="grid sm:grid-cols-3 gap-6">
             <BlogCard
               v-for="relatedPost in relatedPosts"
-              :key="relatedPost._path"
+              :key="relatedPost.path"
               :post="relatedPost"
             />
           </div>

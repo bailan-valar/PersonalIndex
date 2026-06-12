@@ -1,10 +1,10 @@
 <script setup lang="ts">
 // Get latest ideas from content
 const { data: ideas } = await useAsyncData('latest-ideas', () =>
-  queryContent('/blog')
-    .sort({ date: -1 })
+  queryCollection('blog')
+    .order('date', 'DESC')
     .limit(3)
-    .find()
+    .all()
 )
 
 const sectionContent = {
@@ -38,7 +38,7 @@ const sectionContent = {
       <div v-if="ideas && ideas.length > 0" class="grid md:grid-cols-3 gap-6">
         <BlogCard
           v-for="idea in ideas"
-          :key="idea._path"
+          :key="idea.path"
           :post="idea"
         />
       </div>
