@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const config = useAppConfig()
 
+const showWeChatModal = ref(false)
+
 const heroContent = {
   greeting: '你好，我是',
   name: config.author.name,
@@ -69,7 +71,46 @@ const heroContent = {
             <Icon name="ph:brain" class="ml-2" />
           </NuxtLink>
         </div>
+
+        <!-- Social Links -->
+        <div class="flex items-center gap-3 mt-10 animate-slide-up" style="animation-delay: 0.6s">
+          <span class="text-sm text-text-muted mr-1">联系方式</span>
+          <a
+            v-if="config.social.github"
+            :href="config.social.github"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center justify-center w-11 h-11 rounded-full bg-surface border border-gray-200 dark:border-gray-800 text-text-muted hover:text-white hover:bg-primary-500 hover:border-primary-500 hover:-translate-y-0.5 transition-all duration-200"
+            aria-label="GitHub"
+            title="GitHub"
+          >
+            <Icon name="ph:github-logo" class="text-lg" />
+          </a>
+          <a
+            v-if="config.social.xiaohongshu"
+            :href="config.social.xiaohongshu"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center justify-center w-11 h-11 rounded-full bg-surface border border-gray-200 dark:border-gray-800 text-text-muted hover:text-white hover:bg-primary-500 hover:border-primary-500 hover:-translate-y-0.5 transition-all duration-200"
+            aria-label="小红书"
+            title="小红书"
+          >
+            <Icon name="ph:book-bookmark-duotone" class="text-lg" />
+          </a>
+          <button
+            v-if="config.social.wechat"
+            @click="showWeChatModal = true"
+            class="flex items-center justify-center w-11 h-11 rounded-full bg-surface border border-gray-200 dark:border-gray-800 text-text-muted hover:text-white hover:bg-primary-500 hover:border-primary-500 hover:-translate-y-0.5 transition-all duration-200"
+            aria-label="微信"
+            title="微信"
+          >
+            <Icon name="ph:chat-circle-dots-duotone" class="text-lg" />
+          </button>
+        </div>
       </div>
     </div>
+
+    <!-- WeChat Modal -->
+    <WeChatModal v-model:show="showWeChatModal" @close="showWeChatModal = false" />
   </section>
 </template>
