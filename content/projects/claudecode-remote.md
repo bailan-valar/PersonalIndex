@@ -8,8 +8,6 @@ featured: true
 githubUrl: https://github.com/bailan-valar/claudecode-remote
 ---
 
-# ClaudeCode Remote
-
 一款面向独立开发者的 AI 驱动多项目管理工具。通过集成 Claude Code CLI，实现任务的自动规划、执行与审查，让 AI 成为你的全天候开发搭档。
 
 ## 项目背景

@@ -117,31 +117,109 @@
   }
 }
 
-/* Prose styles for content */
+/* Prose styles for rendered markdown content */
 @layer components {
   .prose {
-    @apply max-w-none;
+    @apply max-w-none text-text;
+    font-size: 1.0625rem;
+    line-height: 1.85;
   }
 
-  .prose h1,
-  .prose h2,
-  .prose h3,
+  /* Vertical rhythm between top-level blocks */
+  .prose > * + * {
+    @apply mt-6;
+  }
+  .prose > :first-child {
+    @apply mt-0;
+  }
+
+  /* Headings — override the site-wide hero/section sizes for in-body use */
+  .prose h1 {
+    @apply font-display font-bold tracking-tight mt-10 mb-4;
+    font-size: 1.875rem;
+    line-height: 1.3;
+    scroll-margin-top: 6rem;
+  }
+
+  .prose h2 {
+    @apply font-display font-bold tracking-tight mt-12 mb-4 pb-2 border-b border-gray-200/70 dark:border-gray-800;
+    font-size: 1.5rem;
+    line-height: 1.35;
+    scroll-margin-top: 6rem;
+  }
+
+  .prose h3 {
+    @apply font-display font-semibold tracking-tight mt-8 mb-3;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    scroll-margin-top: 6rem;
+  }
+
   .prose h4 {
-    @apply font-display;
+    @apply font-display font-semibold mt-6 mb-2;
+    font-size: 1.0625rem;
   }
 
+  /* Inline emphasis */
+  .prose strong {
+    @apply font-semibold text-text;
+  }
+  .prose em {
+    @apply italic;
+  }
+
+  /* Lists */
+  .prose ul {
+    @apply list-disc pl-6 space-y-2;
+  }
+  .prose ol {
+    @apply list-decimal pl-6 space-y-2;
+  }
+  .prose li {
+    @apply pl-1.5;
+  }
+  .prose li::marker {
+    @apply text-primary-500 font-semibold;
+  }
+  .prose ul ul,
+  .prose ol ol,
+  .prose ul ol,
+  .prose ol ul {
+    @apply mt-2;
+  }
+
+  /* Links */
   .prose a {
-    @apply text-primary-500 hover:text-primary-500/80 underline underline-offset-2;
+    @apply text-primary-600 dark:text-primary-400 font-medium underline underline-offset-2 decoration-primary-500/40 hover:decoration-primary-500 transition-colors;
   }
 
-  .prose code {
-    @apply bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-sm;
+  /* Blockquote */
+  .prose blockquote {
+    @apply border-l-4 border-primary-500/40 pl-5 italic text-text-muted;
+  }
+  .prose blockquote > :last-child {
+    @apply mb-0;
   }
 
+  /* Divider */
+  .prose hr {
+    @apply my-10 border-gray-200 dark:border-gray-800;
+  }
+
+  /* Inline code */
+  .prose :not(pre) > code {
+    @apply bg-primary-500/10 text-primary-700 dark:text-primary-300 px-1.5 py-0.5 rounded text-[0.9em] font-medium;
+    @apply before:content-[''] after:content-[''];
+  }
   .prose pre {
-    @apply bg-gray-900 text-gray-100 rounded-lg p-4 overflow-x-auto;
+    @apply bg-gray-900 text-gray-100 rounded-lg p-4 overflow-x-auto text-sm;
+  }
+  .prose pre code {
+    @apply bg-transparent p-0 text-inherit font-normal;
+    @apply before:content-[''] after:content-[''];
   }
 
+  /* Images */
   .prose img {
     @apply rounded-lg shadow-md;
   }

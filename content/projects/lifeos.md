@@ -8,8 +8,6 @@ featured: true
 githubUrl: https://github.com/bailan-valar/lifeos
 ---
 
-# LifeOS
-
 LifeOS 不是另一个生产力工具，它是你的**生活操作系统**。通过场景感知、智能捕获、无缝集成，帮助用户从信息焦虑中解放——做正确的事，而不是更多的事。
 
 ## 项目背景

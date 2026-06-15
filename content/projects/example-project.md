@@ -9,8 +9,6 @@ liveUrl: https://example.com
 githubUrl: https://github.com/example
 ---
 
-# 示例项目
-
 这是一个示例项目页面。在这里你可以详细介绍你的项目：
 
 ## 项目背景

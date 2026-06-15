@@ -32,23 +32,27 @@ export default {
           800: '#9d174d',
           900: '#831843',
         },
+        // Semantic tokens reference the CSS variables defined in main.css
+        // (:root for light, .dark for dark). This makes class-based dark mode
+        // actually flip these tokens; light-mode values are identical to the
+        // previous static hex values.
         surface: {
-          DEFAULT: '#ffffff',
-          light: '#ffffff',
+          DEFAULT: 'rgb(var(--color-surface) / <alpha-value>)',
+          light: 'rgb(var(--color-surface) / <alpha-value>)',
           dark: '#0f172a',
         },
         background: {
-          DEFAULT: '#f8fafc',
-          light: '#f8fafc',
+          DEFAULT: 'rgb(var(--color-background) / <alpha-value>)',
+          light: 'rgb(var(--color-background) / <alpha-value>)',
           dark: '#020617',
         },
         text: {
-          DEFAULT: '#0f172a',
-          muted: '#64748b',
+          DEFAULT: 'rgb(var(--color-text) / <alpha-value>)',
+          muted: 'rgb(var(--color-text-muted) / <alpha-value>)',
         },
         ring: {
           primary: '#6366f1',
-          background: '#f8fafc',
+          background: 'rgb(var(--color-background) / <alpha-value>)',
         },
       },
       fontFamily: {
